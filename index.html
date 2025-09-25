@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeSplit Pro - Professional Code Splitter</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="bg-particle"></div>
+        <div class="bg-particle"></div>
+        <div class="bg-particle"></div>
+        <div class="bg-particle"></div>
+        <div class="bg-particle"></div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-code-branch"></i>
+                <h1>CodeSplit<span>Pro</span></h1>
+            </div>
+            <p class="tagline">Professional HTML/CSS/JS separation tool</p>
+        </header>
+
+        <!-- Input Section -->
+        <section class="input-section">
+            <div class="section-header">
+                <h2><i class="fas fa-paste"></i> Input Your Code</h2>
+                <div class="section-actions">
+                    <button class="btn btn-secondary" id="loadSample">
+                        <i class="fas fa-vial"></i> Load Sample
+                    </button>
+                    <button class="btn btn-clear" id="clearCode">
+                        <i class="fas fa-broom"></i> Clear Code
+                    </button>
+                    <button class="btn btn-primary" id="splitCode">
+                        <i class="fas fa-magic"></i> Split Code
+                    </button>
+                </div>
+            </div>
+            <div class="input-container">
+                <textarea id="fullHtmlInput" placeholder="<!DOCTYPE html>&#10;<html>&#10;<head>&#10;    <style>&#10;        /* Your CSS here */&#10;    </style>&#10;</head>&#10;<body>&#10;    <!-- Your HTML here -->&#10;    <script>&#10;        // Your JavaScript here&#10;    </script>&#10;</body>&#10;</html>"></textarea>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <div class="stat-card">
+                <div class="stat-icon html-icon">
+                    <i class="fab fa-html5"></i>
+                </div>
+                <div class="stat-content">
+                    <div id="htmlLines" class="stat-value">0</div>
+                    <div class="stat-label">HTML Lines</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon css-icon">
+                    <i class="fab fa-css3-alt"></i>
+                </div>
+                <div class="stat-content">
+                    <div id="cssLines" class="stat-value">0</div>
+                    <div class="stat-label">CSS Lines</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon js-icon">
+                    <i class="fab fa-js-square"></i>
+                </div>
+                <div class="stat-content">
+                    <div id="jsLines" class="stat-value">0</div>
+                    <div class="stat-label">JS Lines</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon size-icon">
+                    <i class="fas fa-weight-hanging"></i>
+                </div>
+                <div class="stat-content">
+                    <div id="totalSize" class="stat-value">0 KB</div>
+                    <div class="stat-label">Total Size</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Output Sections -->
+        <section class="output-section">
+            <!-- HTML Output -->
+            <div class="output-card html-card">
+                <div class="card-header">
+                    <div class="file-info">
+                        <div class="file-icon">
+                            <i class="fab fa-html5"></i>
+                        </div>
+                        <div>
+                            <h3>index.html</h3>
+                            <span class="file-size">0 KB</span>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn-icon" data-copy="htmlOutput">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                        <button class="btn-icon" data-download="htmlOutput" data-filename="index.html">
+                            <i class="fas fa-download"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="code-container">
+                    <textarea id="htmlOutput" readonly></textarea>
+                </div>
+            </div>
+
+            <!-- CSS Output -->
+            <div class="output-card css-card">
+                <div class="card-header">
+                    <div class="file-info">
+                        <div class="file-icon">
+                            <i class="fab fa-css3-alt"></i>
+                        </div>
+                        <div>
+                            <h3>style.css</h3>
+                            <span class="file-size">0 KB</span>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn-icon" data-copy="cssOutput">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                        <button class="btn-icon" data-download="cssOutput" data-filename="style.css">
+                            <i class="fas fa-download"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="code-container">
+                    <textarea id="cssOutput" readonly></textarea>
+                </div>
+            </div>
+
+            <!-- JS Output -->
+            <div class="output-card js-card">
+                <div class="card-header">
+                    <div class="file-info">
+                        <div class="file-icon">
+                            <i class="fab fa-js-square"></i>
+                        </div>
+                        <div>
+                            <h3>script.js</h3>
+                            <span class="file-size">0 KB</span>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn-icon" data-copy="jsOutput">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                        <button class="btn-icon" data-download="jsOutput" data-filename="script.js">
+                            <i class="fas fa-download"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="code-container">
+                    <textarea id="jsOutput" readonly></textarea>
+                </div>
+            </div>
+        </section>
+
+        <!-- Download All Button -->
+        <section class="download-section">
+            <button class="btn btn-download-all" id="downloadAll">
+                <i class="fas fa-file-archive"></i> Download All as ZIP
+            </button>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Made with <i class="fas fa-heart"></i> by <span id="phoenixLink">Phoenix</span></p>
+        </footer>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <!-- JSZip for ZIP download -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="script.js"></script>
+</body>
+                  </html>
